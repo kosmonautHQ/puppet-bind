@@ -1,0 +1,43 @@
+{
+  "name": "aneesh-bind",
+  "version": "1.1.7",
+  "author": "aneesh",
+  "summary": "Puppet module for bind",
+  "license": "Apache-2.0",
+  "source": "https://github.com/aneesh-c/puppet-bind",
+  "project_page": "https://github.com/aneesh-c/puppet-bind",
+  "issues_url": "https://github.com/aneesh-c/puppet-bind/issues",
+  "tags": [
+    "dns",
+    "bind",
+    "bind9",
+    "named"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04",
+        "16.04"
+      ]
+    }
+  ],
+  "dependencies": [
+  
+  ]
+}
