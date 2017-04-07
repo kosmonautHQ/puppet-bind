@@ -1,6 +1,10 @@
 {
   "name": "aneesh-bind",
+<<<<<<< HEAD
   "version": "1.2.0",
+=======
+  "version": "1.1.7",
+>>>>>>> 5f56e230a3aab4480672726046a89461373bf29b
   "author": "aneesh",
   "summary": "Puppet module for bind",
   "license": "Apache-2.0",

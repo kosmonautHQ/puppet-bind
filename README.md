@@ -16,6 +16,7 @@ Change configuration file settings:
 
 ```puppet
 class { 'bind':
+<<<<<<< HEAD
     listen_on              => 'port 53 { 127.0.0.1; }',
     listen_on_v6           => 'port 53 { ::1; }',
     directory              => '"/var/named"',
@@ -43,6 +44,15 @@ class { 'bind':
       ],
     },
     include                => [ '"/etc/named.rfc1912.zones"', '"/etc/named.root.key"' ],
+=======
+    listen_on       => '127.0.0.1',
+    zone            => {
+      'example.com' => [
+        'type master',
+        'file "example.com.db"',
+      ],
+    },
+>>>>>>> 5f56e230a3aab4480672726046a89461373bf29b
 }
 ```
 
@@ -68,3 +78,18 @@ bind::zone_file { 'example.com.db':
 }
 ```
 
+<<<<<<< HEAD
+=======
+Other variables:
+
+```puppet
+    acl            => {
+        'list' => [ 10.128.0.1, 10.128.0.5 ],
+    },
+    allow_query    => 'localhost',
+    allow_update   => 'none',
+    allow_transfer => 'none',
+    recursion      => 'no',
+    blackhole      => 'none',
+```
+>>>>>>> 5f56e230a3aab4480672726046a89461373bf29b
