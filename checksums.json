@@ -4,7 +4,7 @@
   "manifests/init.pp": "8fc4eb4ddf92f307bc67a6c72208d486",
   "manifests/params.pp": "cc3934df65d70c2b286b49736ffd857b",
   "manifests/zone_file.pp": "d2a2ca2818790c1d9be6334951503187",
-  "metadata.json": "fc31f496eaade0c17c587f48937f886c",
+  "metadata.json": "6ff28fdc2cb7a48e9dc43f2685ccc9af",
   "templates/configfile.erb": "585f4ce3fe7fa688bc08dd40c17fa30b",
   "templates/zone_file.erb": "982d8585112d639ce9de78e2736bdf8c"
 }
