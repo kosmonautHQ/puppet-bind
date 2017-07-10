@@ -48,13 +48,13 @@ class bind (
 ) inherits ::bind::params {
   package { $package_name: ensure => installed }
   file { $config_file:
-    require => package[$package_name],
+    require => Package[$package_name],
     backup  => '.backup',
     content => template($template),
   }
   if $::osfamily == 'RedHat' {
     service { 'named':
-      require => package[$package_name],
+      require => Package[$package_name],
       enable  => true,
     }
   }

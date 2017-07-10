@@ -21,7 +21,7 @@ define bind::zone_file (
     }
   }
   file { "${zonedir}/${file_name}":
-    require => package[$package_name],
+    require => Package[$package_name],
     content => template($template),
     group   => $zonegroup,
     mode    => '0640',
