@@ -32,6 +32,12 @@ class { 'bind':
     managed_keys_directory => '"/var/named/dynamic"',
     pid_file               => '"/run/named/named.pid"',
     session_keyfile        => '"/run/named/session.key"',
+    version                => '"[SECURED]"',
+    server_id              => 'none',
+    cleaning_interval      => '120',
+    interface_interval     => '0',
+    max_ncache_ttl         => '3600',
+    nnotify                => 'no',
     logging                => true,
     zone                   => {
       'example.com' => [

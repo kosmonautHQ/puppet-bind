@@ -77,6 +77,24 @@ options {
 <% if @auth_nxdomain -%>
 	auth-nxdomain <%= @auth_nxdomain %>;
 <% end -%>
+<% if @version -%>
+	version <%= @version %>;
+<% end -%>
+<% if @server_id -%>
+	server-id <%= @server_id %>;
+<% end -%>
+<% if @cleaning_interval -%>
+	cleaning-interval <%= @cleaning_interval %>;
+<% end -%>
+<% if @interface_interval -%>
+	interface-interval <%= @interface_interval %>;
+<% end -%>
+<% if @max_ncache_ttl -%>
+	max-ncache-ttl <%= @max_ncache_ttl %>;
+<% end -%>
+<% if @nnotify -%>
+	notify <%= @nnotify %>;
+<% end -%>
 };
 <% if @logging -%>
 logging {
