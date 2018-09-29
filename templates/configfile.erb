@@ -25,44 +25,43 @@ acl <%= key %> {
 options {
 
 <% if !@listen_on.empty? -%>
-<% @listen_on.each do |listv4| -%>
 listen-on port 53 {
+<% @listen_on.each do |listv4| -%>
   <%= listv4 %>;
-};
 <% end -%>
+};
 <% end -%>
 
 <% if !@listen_on_v6.empty? -%>
-<% @listen_on_v6.each do |listv6| -%>
 listen-on-v6 port 53 {
+<% @listen_on_v6.each do |listv6| -%>
   <%= listv6 %>;
-};
 <% end -%>
+};
 <% end -%>
 
 <% if !@allow_query.empty? -%>
-<% @allow_query.each do |listquery| -%>
 allow-query {
+<% @allow_query.each do |listquery| -%>
   <%= listquery %>;
-};
 <% end -%>
+};
 <% end -%>
 
 <% if !@allow_transfer.empty? -%>
-<% @allow_transfer.each do |listtransfer| -%>
 allow-transfer {
+<% @allow_transfer.each do |listtransfer| -%>
   <%= listtransfer %>;
-};
 <% end -%>
+};
 <% end -%>
 
 <% if !@allow_update.empty? -%>
-<% @allow_update.each do |listupdate| -%>
 allow-update {
+<% @allow_update.each do |listupdate| -%>
   <%= listupdate %>;
-};
-
 <% end -%>
+};
 <% end -%>
 
 <% if @directory -%>
