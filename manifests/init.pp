@@ -60,11 +60,18 @@ class bind (
     require => Package[$package_name],
     backup  => '.backup',
     content => template($template),
+    notify  => Service[$zonegroup],
   }
   if $::osfamily == 'RedHat' {
     service { 'named':
       require => Package[$package_name],
       enable  => true,
+      ensure  => "running",
     }
+  }
+  file { $zonedir:
+    require   => Package[$package_name],
+    mode      => '0770',
+    notify    => Service[$zonegroup]
   }
 }
