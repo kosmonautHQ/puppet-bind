@@ -25,5 +25,6 @@ define bind::zone_file (
     content => template($template),
     group   => $zonegroup,
     mode    => '0640',
+    notify  => Service["named"]
   }
 }

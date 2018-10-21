@@ -1,7 +1,7 @@
 $TTL <% if @ttl -%><%= @ttl %><% else -%>3600<% end -%>
 
 @       IN SOA  <% if @nameserver -%><%= @nameserver %>.<% else -%>@<% end -%> <% if @admin -%><%= @admin %>.<% else -%>root.<% end -%> (
-                                        <% if @serial -%><%= @serial %><% else -%>1<% end -%>	; serial
+                                        <% if @serial -%><%= @serial %><% else -%><%= Time.now.to_i %><% end -%>	; serial
                                         <% if @refresh -%><%= @refresh %><% else -%>1800<% end -%>	; refresh
                                         <% if @retry -%><%= @retry %><% else -%>3600<% end -%>	; retry
                                         <% if @expire -%><%= @expire %><% else -%>604800<% end -%>	; expire

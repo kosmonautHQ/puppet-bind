@@ -73,7 +73,7 @@ bind::zone_file { 'example.com.db':
     nameserver      => 'ns1.example.com.',
     admin           => 'admin@example.com.',
     ttl             => '3600',
-    serial          => '1',
+    serial          => '1', # if no serial is set, the current time.to.i will set
     refresh         => '3600',
     retry           => '1800',
     expire          => '3600',
