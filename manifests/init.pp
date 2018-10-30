@@ -47,6 +47,7 @@ class bind (
   $cleaning_interval      = undef,
   $interface_interval     = undef,
   $max_ncache_ttl         = undef,
+  $zone_statistics        = undef,
   $nnotify                = undef,
   $request_ixfr           = undef,
   $logging                = undef,
