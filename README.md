@@ -38,6 +38,7 @@ class { 'bind':
     interface_interval     => '0',
     max_ncache_ttl         => '3600',
     nnotify                => 'no',
+    zone_statistics        => 'yes',
     request_ixfr           => 'no',
     logging                => true,
     statistics_channels    => {
