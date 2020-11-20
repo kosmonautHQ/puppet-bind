@@ -1,0 +1,250 @@
+/*
+  This file is managed by Puppet.
+  Do not edit manually!
+
+  - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+  - If you are building a RECURSIVE (caching) DNS server, you need to enable
+    recursion.
+  - If your recursive DNS server has a public IP address, you MUST enable access
+    control to limit queries to your legitimate users. Failing to do so will
+    cause your server to become part of large scale DNS amplification
+    attacks. Implementing BCP38 within your network would greatly
+    reduce such attack surface
+*/
+
+<% if !@acl.empty? -%>
+    <% @acl.each do |key,value| -%>
+    acl <%= key %> {
+        <% value.each do |ip| -%>
+        <%= ip %>;
+        <% end -%>
+    };
+    <% end -%>
+<% end -%>
+
+options {
+
+<% if @directory -%>
+    directory "<%= @directory -%>";
+<% end -%>
+
+<% if !@listen_on.empty? -%>
+    listen-on port 53 {
+    <% @listen_on.each do |listv4| -%>
+      <%= listv4 -%>;
+    <% end -%>
+};
+<% end -%>
+
+<% if !@listen_on_v6.empty? -%>
+    listen-on-v6 port 53 {
+    <% @listen_on_v6.each do |listv6| -%>
+      <%= listv6 %>;
+    <% end -%>
+};
+<% end -%>
+
+<% if !@allow_query.empty? -%>
+    allow-query {
+    <% @allow_query.each do |listquery| -%>
+      <%= listquery %>;
+    <% end -%>
+};
+<% end -%>
+
+<% if !@allow_transfer.empty? -%>
+    allow-transfer {
+    <% @allow_transfer.each do |listtransfer| -%>
+      <%= listtransfer %>;
+    <% end -%>
+};
+<% end -%>
+
+<% if !@allow_update.empty? -%>
+    allow-update {
+    <% @allow_update.each do |listupdate| -%>
+      <%= listupdate %>;
+    <% end -%>
+};
+<% end -%>
+
+<% if @dump_file -%>
+    dump-file "<%= @dump_file -%>";
+<% end -%>
+
+<% if @zone_statistics -%>
+    zone-statistics <%= @zone_statistics -%>;
+<% end -%>
+
+<% if @statistics_file -%>
+    statistics-file "<%= @statistics_file -%>";
+<% end -%>
+
+<% if @memstatistics_file -%>
+    memstatistics-file "<%= @memstatistics_file -%>";
+<% end -%>
+
+<% if @blackhole -%>
+    blackhole <%= @blackhole -%>;
+<% end -%>
+
+<% if @recursion -%>
+    recursion <%= @recursion -%>;
+<% end -%>
+
+<% if !@allow_recursion.empty? then -%>
+    allow-recursion {
+    <%- @allow_recursion.each do |recursion| -%>
+      <%= recursion -%>;
+    <%- end -%>
+    };
+<% end -%>
+
+<% if !@allow_query_cache.empty? then -%>
+    allow-query {
+    <%- @allow_query_cache.each do |query| -%>
+      <%= query -%>;
+    <%- end -%>
+    };
+<% end -%>
+
+<% if @empty_zones_enable -%>
+    empty-zones-enable yes;
+<% else -%>
+    empty-zones-enable no;
+<% end -%>
+
+<% if @dnssec_enable -%>
+    dnssec-enable <%= @dnssec_enable -%>;
+<% end -%>
+
+<% if @dnssec_validation -%>
+    dnssec-validation <%= @dnssec_validation -%>;
+<% end -%>
+
+<% if @bindkeys_file -%>
+    bindkeys-file "<%= @bindkeys_file -%>";
+<% end -%>
+
+<% if @managed_keys_directory -%>
+    managed-keys-directory "<%= @managed_keys_directory -%>";
+<% end -%>
+
+<% if @pid_file -%>
+    pid-file "<%= @pid_file -%>";
+<% end -%>
+
+<% if @session_keyfile -%>
+    session-keyfile "<%= @session_keyfile -%>";
+<% end -%>
+
+<% if @auth_nxdomain -%>
+    auth-nxdomain <%= @auth_nxdomain -%>;
+<% end -%>
+
+<% if @version -%>
+    version "<%= @version -%>";
+<% end -%>
+
+<% if @server_id -%>
+    server-id <%= @server_id -%>;
+<% end -%>
+
+<% if @cleaning_interval -%>
+    cleaning-interval <%= @cleaning_interval -%>;
+<% end -%>
+
+<% if @interface_interval -%>
+    interface-interval <%= @interface_interval -%>;
+<% end -%>
+
+<% if @max_ncache_ttl -%>
+    max-ncache-ttl <%= @max_ncache_ttl -%>;
+<% end -%>
+
+<% if @zone_notify -%>
+    notify <%= @zone_notify -%>;
+<% end -%>
+
+<% if @request_ixfr -%>
+    request-ixfr <%= @request_ixfr -%>;
+<% end -%>
+
+<% if @forwarders.empty? then -%>
+    // forwarders {
+    //     0.0.0.0;
+    // };
+<% else -%>
+    forwarders {
+    <%- @forwarders.each do |forwarder| -%>
+      <%= forwarder -%>;
+    <%- end -%>
+    };
+<% end -%>
+
+<% if @forward_policy then -%>
+    forward <%= @forward_policy %>;
+<% end -%>
+};
+
+<% if !@statistics_channels.empty? -%>
+    <% @statistics_channels.each do |key,value| -%>
+    statistics-channels {
+        inet <%= key %> port 8083 allow {
+        <% value.each do |directive| -%>
+        <%= directive %>;
+        <% end -%>
+      };
+    };
+    <% end -%>
+<% end -%>
+
+<% if !@key.empty? -%>
+    <% @key.each do |key,value| -%>
+    key "<%= key %>" {
+        <% value.each do |directive| -%>
+        <%= directive %>;
+    <% end -%>
+    };
+    <% end -%>
+<% end -%>
+
+<% if @query_log_enable -%>
+logging {
+
+        channel query_logging {
+                file "<%= @working_dir %>/named_querylog"
+                versions 10 size 100M;
+                print-time yes;
+                severity debug 1;
+        };
+        category queries {
+                query_logging;
+        };
+
+        channel syslog_errors {
+                syslog user;
+                severity error;
+        };
+        category default { syslog_errors;  };
+        category lame-servers { null; };
+};
+<%- elsif !@log_channels.empty? or !@log_categories.empty? -%>
+logging {
+  <%- @log_channels.each do |channel, options| -%>
+    channel <%= channel %> {
+    <%- options.each do |o| -%>
+      <%= o %>;
+    <%- end -%>
+    };
+  <%- end -%>
+
+  <%- @log_categories.each do |category, options| -%>
+    category <%= category %> {
+    <%- options.each do |o| -%>
+      <%= o %>;
+    <%- end -%>
+    };
+  <%- end -%>
+};
+<% end -%>

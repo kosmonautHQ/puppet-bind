@@ -1,0 +1,20 @@
+;
+; BIND data file for <%= @title %> zone.
+; This file is managed by Puppet.
+; Do not edit manually!
+;
+
+$ORIGIN <%= @title %>.
+$TTL    <%= @zone_ttl %>
+@       IN       SOA        <%= @soa %>. <%= @soa_email %>. (
+                                <%= @serial %> ; Serial
+                                <%= @zone_refresh %>         ; Refresh
+                                <%= @zone_retry %>         ; Retry
+                                <%= @zone_expire %>         ; Expire
+                                <%= @zone_minimum %> )       ; Negative Cache TTL
+
+<% if !@entries.empty? -%>
+<% @entries.each do |entry| -%>
+<%= entry %>
+<% end -%>
+<% end -%>

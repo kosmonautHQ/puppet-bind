@@ -1,0 +1,5 @@
+zone "<%= @title %>" IN {
+<% @content.each do |directive| -%>
+    <%= directive %>;
+<% end -%>
+};

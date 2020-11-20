@@ -1,35 +1,29 @@
 {
-  "name": "onkeldom-bind",
-  "version": "1.0.0",
-  "author": "OnkelDom",
-  "summary": "Puppet module for bind",
+  "name": "kosmonaut-bind",
+  "version": "0.1.0",
+  "author": "kosmonaut",
+  "summary": "Install and manage ISC Bind via Puppet",
   "license": "Apache-2.0",
-  "source": "https://github.com/OnkelDom/puppet-bind",
-  "project_page": "https://github.com/OnkelDom/puppet-bind",
-  "issues_url": "https://github.com/OnkelDom/puppet-bind/issues",
+  "source": "https://github.com/kosmonaut/puppet-bind.git",
+  "project_page": "https://github.com/kosmonaut/puppet-bind",
+  "issues_url": "https://github.com/kosmonaut/puppet-bind/issues",
   "dependencies": [
-  
-  ],
-  "data_provider": null,
-  "tags": [
-    "dns",
-    "bind",
-    "bind9",
-    "named"
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=2.6.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">=2.0.0"
+    }
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat",
+      "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6",
-        "7"
-      ]
-    },
-    {
-      "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "6",
-        "7"
+        "8",
+        "9",
+        "10"
       ]
     },
     {
@@ -37,16 +31,41 @@
       "operatingsystemrelease": [
         "14.04",
         "16.04",
-        "18.04"
+        "18.04",
+        "19.04",
+        "20.04"
       ]
     },
     {
-      "operatingsystem": "Debian",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
+        "6",
         "7",
-        "8",
-        "9"
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
       ]
     }
-  ]
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "tags": [
+    "dns",
+    "bind",
+    "bind9",
+    "named"
+  ],
+  "pdk-version": "1.17.0",
+  "template-url": "pdk-default#1.17.0",
+  "template-ref": "tags/1.17.0-0-gd3a4319"
 }
